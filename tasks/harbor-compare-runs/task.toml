@@ -1,0 +1,41 @@
+schema_version = "1.3"
+artifacts = []
+
+[task]
+name = "hackathon/harbor-compare-runs"
+description = "Diff two Harbor runs by exercise and chart them, headless"
+keywords = ["harbor", "python", "matplotlib", "data-engineering"]
+authors = []
+
+[metadata]
+category = "data-engineering"
+difficulty_explanation = """
+Reading Harbor's own output, which is what several scored tasks do. The rollout
+suffix changes between runs, so the two runs line up on the exercise name; the
+job directory holds files and scratch directories that are not rollouts; a
+canary rollout is not part of the benchmark; and a rollout that wrote no
+reward.txt has no result rather than a zero, so calling it a regression is
+wrong. The chart has to come out of a container with no display, which is a
+silent failure for anyone who has not set the Agg backend.
+"""
+
+[verifier]
+timeout_sec = 300.0
+collect = []
+
+[verifier.env]
+
+[agent]
+timeout_sec = 300.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1800.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]

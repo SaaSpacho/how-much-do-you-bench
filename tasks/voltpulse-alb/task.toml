@@ -1,0 +1,35 @@
+schema_version = "1.3"
+artifacts = []
+
+[task]
+name = "hackathon/voltpulse-alb"
+description = "Self-hosted-LLM benchmark exercise 23-voltpulse-alb (terraform)"
+authors = []
+keywords = ["selfhosted-llm", "terraform"]
+
+[metadata]
+language = "terraform"
+
+[verifier]
+timeout_sec = 300.0
+
+[verifier.env]
+
+[agent]
+# Lowered from 900/1200 after measuring four harnesses across the suite: the
+# median rollout finished its agent phase in 29s, and a rollout that had spent
+# its whole budget had essentially never gone on to pass -- it was a harness
+# stuck on one task, not a slow correct answer. The tail is what sets wall
+# clock, because the last rollout cannot be parallelised: one timeout held a
+# submission at 20/21 for thirteen minutes.
+timeout_sec = 300.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1800.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+mcp_servers = []
+
+[environment.env]

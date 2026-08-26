@@ -1,0 +1,11 @@
+jobs/
+__pycache__/
+.terraform/
+*.tfstate*
+.env
+ops/terraform/backend.hcl
+.claude/
+
+# The scored half, cloned from the private repo by `just ops::tasks-sync`.
+# Never committed here: that is the whole point of the split.
+tasks-scored/

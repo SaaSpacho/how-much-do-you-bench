@@ -1,0 +1,40 @@
+schema_version = "1.3"
+artifacts = []
+
+[task]
+name = "hackathon/survey-tooling-uptake"
+description = "Count a multi-select survey grid under rules that live in the docs, not the data"
+authors = []
+keywords = ["survey", "python", "csv", "data-engineering"]
+
+[metadata]
+category = "data-engineering"
+difficulty_explanation = """
+A wide Qualtrics export with two header rows and a question that is one column
+per option. Counting the columns is five minutes of work and gives the wrong
+answer: the pilot panel is excluded from published figures, speeders and
+straight-liners are dropped, the "other, please specify" column is not an
+option, and counts are unweighted. Each of those rules is in docs/, and none of
+them is in the data.
+"""
+
+[verifier]
+timeout_sec = 300.0
+collect = []
+
+[verifier.env]
+
+[agent]
+timeout_sec = 300.0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1800.0
+os = "linux"
+cpus = 2
+memory_mb = 4096
+mcp_servers = []
+
+[environment.env]
+
+[solution.env]
