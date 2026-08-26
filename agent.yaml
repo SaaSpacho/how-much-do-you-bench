@@ -24,7 +24,7 @@
 # all, is in docs/harnesses.md.
 
 agents:
-  - name: claude-code
+  - name: opencode
     # The `gateway` provider is defined under kwargs below. opencode's adapter
     # refuses a model_name with no provider prefix.
     model_name: gateway/gemma
