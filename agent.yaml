@@ -33,6 +33,7 @@ agents:
       - ./skills/docs
       - ./skills/caveman
       - ./skills/engineering-rules
+      - ./skills/airflow
     mcp_servers:
       - name: context7
         transport: streamable-http
@@ -121,7 +122,7 @@ agents:
                   context: 262144
                   output: 8192
                 options:
-                  reasoningEffort: medium
+                  reasoningEffort: high
 
   # Your own agent: the `agent/` directory, run as `uv run agent --instruction`.
   #
