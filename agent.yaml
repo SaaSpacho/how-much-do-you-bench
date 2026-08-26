@@ -30,6 +30,7 @@ agents:
     model_name: gateway/gemma
     skills:
       - ./skills/polars
+      - ./skills/docs
     mcp_servers:
       - name: context7
         transport: streamable-http
