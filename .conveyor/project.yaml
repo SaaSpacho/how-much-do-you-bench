@@ -1,0 +1,15 @@
+docker:
+    path: "."
+name: how-much-do-you-bench
+id: 433d7849-7555-4eb8-9eab-4a22d5752116
+ide:
+    filename: ide.yaml
+resources:
+    path: resources
+streaming:
+    filename: streaming.yaml
+template: ""
+version: "0.3"
+workflows:
+    path: dags
+    version: 2

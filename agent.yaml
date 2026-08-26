@@ -29,7 +29,10 @@ agents:
     # refuses a model_name with no provider prefix.
     model_name: gateway/gemma
     skills: []
-    mcp_servers: []
+    mcp_servers:
+      - name: context7
+        transport: streamable-http
+        url: https://mcp.context7.com/mcp
     kwargs:
       opencode_config:
         # Your system prompt. `build` is the agent `opencode run` uses, and
