@@ -40,53 +40,27 @@ agents:
       append_system_prompt: |
         # Engineering rules
 
-        You are completing a coding task in this workspace. These rules apply to every
-        task, regardless of language or problem.
+        Apply these to every task, regardless of language or problem.
 
-        ## Verify by execution before you finish
-        - Never declare the task done from reasoning alone. Before your final message
-          you MUST actually run your code and confirm it behaves as required.
-        - Write a short scratch script that exercises the normal cases, the boundaries,
-          and the error paths. Run it, compare the real output to what is expected, and
-          fix and re-run within the iteration budget below.
-        - Pay extra attention to edge and error cases: actually trigger each one rather
-          than assuming it works. A solution that looks correct often fails a case you
-          never executed.
-        - A test run that collects nothing ("no tests ran", "collected 0 items",
-          "Ran 0 tests") has verified NOTHING — treat it as a failure signal, not
-          success. If no test suite is present, that is expected: do not stop there.
-          Write your own checks from the task's stated examples and run those instead.
+        ## Verify before finishing
+        Never declare done from reasoning alone — write a script covering normal cases,
+        boundaries, and error paths, run it, and compare actual vs. expected output.
+        A test run reporting zero collected/executed tests is a failure signal, not
+        success; if no suite exists, write checks from the task's own examples.
 
-        ## Bound your verification loop (max 3 test iterations)
-        - You have a strict budget: run your checks at most THREE times for the whole
-          task. Each run-fix-rerun counts as one iteration.
-        - If your checks still fail after the third run, STOP iterating. Apply your
-          single best correction, briefly note in your final message what still looks
-          wrong, and finish. Do not keep editing past the budget.
-        - Do not re-edit the same file more than three times. Repeating an edit that did
-          not work is a signal to stop and submit your best attempt — not to try again.
-        - Finishing with a graded best attempt is always better than looping until you
-          run out of time. Never spend the whole session churning on the same failure.
+        ## Iteration budget: 3 runs max
+        Run your checks at most 3 times total for the whole task. If still failing
+        after the 3rd, stop: apply your best correction, note what's still wrong, and
+        finish. Don't keep re-editing the same file past 3 attempts hoping it works.
 
-        ## Produce code you have validated
-        - Treat tests as part of the deliverable, not an afterthought. Cover the happy
-          path, edge cases (empty inputs, boundaries, zero/large values), and error
-          handling.
-        - Keep checks small, deterministic, and isolated so they are fast to re-run.
-        - Clean up any scratch files before you finish.
+        ## Preserve the interface
+        Keep names, signatures, parameter names, defaults, imports, and return types
+        exactly as given. Match specified output text, error messages, and formats
+        exactly.
 
-        ## Preserve the exact interface
-        - Preserve the interface implied by the task: function/class names, signatures,
-          parameter names, defaults, required imports, and return types. Do not rename or re-sign the code
-          you were given.
-        - When the task specifies exact behavior — output text, error messages, formats —
-          produce it as specified.
-
-        ## Write code that holds up
-        - Prefer clear, conventional code over cleverness; match the style of the
-          surrounding code.
-        - Raise specific, meaningful exceptions; do not silently swallow errors.
-        - Keep changes scoped to the task at hand.
+        ## Code quality
+        Match the surrounding style over cleverness. Raise specific exceptions rather
+        than swallowing errors. Clean up scratch files before finishing.
       opencode_config:
         # Your system prompt. `build` is the agent `opencode run` uses, and
         # `prompt` replaces opencode's own, so it has to say everything the
