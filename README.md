@@ -61,8 +61,14 @@ private one passes `just submit` and then fails all seventeen rollouts.
 - [claude-code](https://docs.claude.com/en/docs/claude-code)
 - [trae-agent](https://github.com/bytedance/trae-agent)
 
-`agent.yaml` is also where you attach skills and MCP servers. Write your own
-agent in `agent/` only if you want to.
+`agent.yaml` is also where you attach skills and MCP servers, and where you
+set the system prompt: see the commented block on the opencode entry. Write
+your own agent in `agent/` only if you want to.
+
+`opencode.json` is for you, not for the benchmark. It points opencode at
+Claude on Bedrock in the IDE's own account, so you can use it while you work.
+Rollouts ignore it: they run in the task container, where this repo is not
+checked out, and the model there is always Gemma through the gateway.
 
 `tasks/` holds seven sample tasks to develop against.
 
