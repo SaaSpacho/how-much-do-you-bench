@@ -32,39 +32,12 @@ agents:
       - ./skills/polars
       - ./skills/docs
       - ./skills/caveman
+      - ./skills/engineering-rules
     mcp_servers:
       - name: context7
         transport: streamable-http
         url: https://mcp.context7.com/mcp
     kwargs:
-      append_system_prompt: |
-        # Documentation
-
-        Before tackling ANY task, use the docs skill to read ALL the documentation.
-
-        # Engineering rules
-
-        Apply these to every task, regardless of language or problem.
-
-        ## Verify before finishing
-        Never declare done from reasoning alone — write a script covering normal cases,
-        boundaries, and error paths, run it, and compare actual vs. expected output.
-        A test run reporting zero collected/executed tests is a failure signal, not
-        success; if no suite exists, write checks from the task's own examples.
-
-        ## Iteration budget: 3 runs max
-        Run your checks at most 3 times total for the whole task. If still failing
-        after the 3rd, stop: apply your best correction, note what's still wrong, and
-        finish. Don't keep re-editing the same file past 3 attempts hoping it works.
-
-        ## Preserve the interface
-        Keep names, signatures, parameter names, defaults, imports, and return types
-        exactly as given. Match specified output text, error messages, and formats
-        exactly.
-
-        ## Code quality
-        Match the surrounding style over cleverness. Raise specific exceptions rather
-        than swallowing errors. Clean up scratch files before finishing.
       opencode_config:
         # Your system prompt. `build` is the agent `opencode run` uses, and
         # `prompt` replaces opencode's own, so it has to say everything the
