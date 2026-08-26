@@ -31,6 +31,7 @@ agents:
     skills:
       - ./skills/polars
       - ./skills/docs
+      - ./skills/caveman
     mcp_servers:
       - name: context7
         transport: streamable-http
