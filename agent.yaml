@@ -98,7 +98,7 @@ agents:
                   context: 262144
                   output: 8192
                 options:
-                  reasoningEffort: high
+                  reasoningEffort: medium
 
   # Your own agent: the `agent/` directory, run as `uv run agent --instruction`.
   #
