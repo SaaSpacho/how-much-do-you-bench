@@ -38,6 +38,10 @@ agents:
         url: https://mcp.context7.com/mcp
     kwargs:
       append_system_prompt: |
+        # Documentation
+
+        Before tackling ANY task, use the docs skill to read ALL the documentation.
+
         # Engineering rules
 
         Apply these to every task, regardless of language or problem.
